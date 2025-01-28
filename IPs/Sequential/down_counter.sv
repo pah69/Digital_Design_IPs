@@ -1,3 +1,0 @@
-
-// Up or Down Counter
-
