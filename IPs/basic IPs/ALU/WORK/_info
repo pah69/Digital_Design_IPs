@@ -1,0 +1,165 @@
+m255
+K4
+z2
+Z0 !s12c _opt
+Z1 !s99 nomlopt
+R0
+R1
+R0
+R1
+!s11f vlog 2024.1 2024.02, Feb  1 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z2 dC:/Users/mayaa/Desktop/UVM and Verification/Test project
+T_opt
+!s110 1738077735
+VGBbli;Na96Ya41>Z2j8Ke1
+04 6 4 work ALU_tb fast 0
+=1-54b203166719-6798f627-2b8-43d4
+R1
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work WORK +acc
+Z3 tCvgOpt 0
+n@_opt
+OL;O;2024.1;79
+R2
+vALU
+Z4 2D:/IPs/IPs/basic IPs/ALU.sv
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z6 DXx4 work 7 ALU_pkg 0 22 bG01dakaOm5nTQ8gRX1z?2
+Z7 !s110 1738077821
+!i10b 1
+!s100 D?T@2I0>GG[456mONSA=71
+I1aXn5a4POm=ZBPICnCOFj2
+S1
+Z8 dD:/IPs/IPs/basic IPs
+w1738077240
+Z9 8D:/IPs/IPs/basic IPs/ALU.sv
+Z10 FD:/IPs/IPs/basic IPs/ALU.sv
+!i122 15
+L0 36 23
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2024.1;79
+r1
+!s85 0
+31
+!s108 1738077820.000000
+Z13 !s107 D:/IPs/IPs/basic IPs/ALU.sv|
+Z14 !s90 -reportprogress|300|-work|WORK|-vopt|-sv|-stats=none|D:/IPs/IPs/basic IPs/ALU.sv|
+!i113 0
+Z15 o-work WORK -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+n@a@l@u
+XALU_pkg
+2D:/IPs/IPs/basic IPs/ALU_pkg.sv
+R5
+R7
+!i10b 1
+!s100 ]MdB;QKn5jzJi:k:2h3RY1
+IbG01dakaOm5nTQ8gRX1z?2
+S1
+R8
+w1738076850
+8D:/IPs/IPs/basic IPs/ALU_pkg.sv
+FD:/IPs/IPs/basic IPs/ALU_pkg.sv
+!i122 17
+L0 3 0
+VbG01dakaOm5nTQ8gRX1z?2
+R12
+r1
+!s85 0
+31
+Z16 !s108 1738077821.000000
+!s107 D:/IPs/IPs/basic IPs/ALU_pkg.sv|
+!s90 -reportprogress|300|-work|WORK|-vopt|-sv|-stats=none|D:/IPs/IPs/basic IPs/ALU_pkg.sv|
+!i113 0
+R15
+R3
+n@a@l@u_pkg
+XALU_sv_unit
+R4
+R5
+Z17 !s110 1738076996
+V1Gijl_j=0HjNk>Q[CH0Lk3
+r1
+!s85 0
+!i10b 1
+!s100 F7kSK]Pg52b>iE1lnKVQ71
+I1Gijl_j=0HjNk>Q[CH0Lk3
+!i103 1
+S1
+R8
+w1738076991
+R9
+R10
+!i122 3
+Z18 L0 2 0
+R12
+31
+Z19 !s108 1738076996.000000
+R13
+R14
+!i113 0
+R15
+R3
+n@a@l@u_sv_unit
+vALU_tb
+Z20 2D:/IPs/IPs/basic IPs/ALU_tb.sv
+R5
+R6
+R7
+!i10b 1
+!s100 EMJz1EPcoZP0ooa^;JX_Q1
+I^ocoT]Q9@1^cA?fPXFJ:F1
+S1
+R8
+w1738077697
+Z21 8D:/IPs/IPs/basic IPs/ALU_tb.sv
+Z22 FD:/IPs/IPs/basic IPs/ALU_tb.sv
+!i122 16
+L0 3 81
+R11
+R12
+r1
+!s85 0
+31
+R16
+Z23 !s107 D:/IPs/IPs/basic IPs/ALU_tb.sv|
+Z24 !s90 -reportprogress|300|-work|WORK|-vopt|-sv|-stats=none|D:/IPs/IPs/basic IPs/ALU_tb.sv|
+!i113 0
+R15
+R3
+n@a@l@u_tb
+XALU_tb_sv_unit
+R20
+R5
+R17
+VM=DkJze1kT`2cHO=zK99K1
+r1
+!s85 0
+!i10b 1
+!s100 [UVDQ]J0b3TcPZhgNSd<e0
+IM=DkJze1kT`2cHO=zK99K1
+!i103 1
+S1
+R8
+w1738076986
+R21
+R22
+!i122 4
+R18
+R12
+31
+R19
+R23
+R24
+!i113 0
+R15
+R3
+n@a@l@u_tb_sv_unit
