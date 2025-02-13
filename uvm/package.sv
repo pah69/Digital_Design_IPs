@@ -14,7 +14,6 @@ package alu_pkg;
   `include "agent.svh"
   `include "env.svh"
   `include "base_test.sv"
-  //  Group: Parameters
 
 
 

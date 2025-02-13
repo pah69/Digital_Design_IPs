@@ -1,0 +1,26 @@
+D:/IPs/Neural_network_SV/FCNN/fcnn_top.sv {2 {vlog -work work -vopt -sv -stats=none D:/IPs/Neural_network_SV/FCNN/fcnn_top.sv
+QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+-- Compiling module fcnn_top
+** Warning: D:/IPs/Neural_network_SV/FCNN/fcnn_top.sv(2): (vlog-13314) Defaulting port 'image' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	fcnn_top
+
+} {} {}} D:/IPs/Neural_network_SV/FCNN/relu.sv {1 {vlog -work work -vopt -sv -stats=none D:/IPs/Neural_network_SV/FCNN/relu.sv
+QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+-- Compiling module relu
+
+Top level modules:
+	relu
+
+} {} {}} D:/IPs/Neural_network_SV/FCNN/fc_layer.sv {2 {vlog -work work -vopt -sv -stats=none D:/IPs/Neural_network_SV/FCNN/fc_layer.sv
+QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+-- Compiling module fully_connected_layer
+** Warning: D:/IPs/Neural_network_SV/FCNN/fc_layer.sv(7): (vlog-13314) Defaulting port 'weights' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/IPs/Neural_network_SV/FCNN/fc_layer.sv(8): (vlog-13314) Defaulting port 'biases' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/IPs/Neural_network_SV/FCNN/fc_layer.sv(9): (vlog-13314) Defaulting port 'inputs' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	fully_connected_layer
+
+} {} {}}

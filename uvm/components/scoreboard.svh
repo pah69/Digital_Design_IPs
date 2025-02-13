@@ -30,16 +30,75 @@ class scoreboard extends uvm_scoreboard;
         // Comparison condition with If/Else
         if (expected_item.opA + expected_item.opB == expected_item.out) begin
           `uvm_info(get_type_name(), $sformatf(
-                    "Matched : opA = %0d, opB = %0d, out = %0d",
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
                     expected_item.opA,
                     expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA - expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA * expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA & expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA | expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA ^ expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end
+        else if ( ((expected_item.opA == expected_item.opB) ? 1'b1 : 1'b0 )== expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
+                    expected_item.out
+                    ), UVM_LOW);
+        end else if (expected_item.opA << expected_item.opB == expected_item.out) begin
+          `uvm_info(get_type_name(), $sformatf(
+                    "Matched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
+                    expected_item.opA,
+                    expected_item.opB,
+                    expected_item.opcode,
                     expected_item.out
                     ), UVM_LOW);
         end else begin
           `uvm_error(get_type_name(), $sformatf(
-                     "Mismatched : opA = %0d, opB = %0d, out = %0d",
+                     "MisMatched : opA = %0h, opB = %0h, opcode = %0d, out = %0h",
                      expected_item.opA,
                      expected_item.opB,
+                     expected_item.opcode,
                      expected_item.out
                      ))
         end

@@ -1,0 +1,21 @@
+Top
+    --- Input layer
+        --- Neurons (Nodes) 
+            --- Data Width
+            --- Xu ly du lieu dau vao tu cac anh mnist
+    --- Hidden layer
+        --- Neurons (Nodes)
+            --- Weights
+            --- Bias
+        --- Activation Function : ReLu
+        --- Feed Forward propagation
+        --- Back propagation
+        --- Matrix Mul
+        ---
+    --- Output layer
+        --- Activation Function : ReLu
+        --- Neurons Nodes
+        --- Back 
+        
+Include a RAM : to store Weight an Bias from .txt files--> process input images later in Input Layer
+

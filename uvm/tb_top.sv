@@ -1,3 +1,5 @@
+
+`timescale 1ns/1ps
 `include "package.sv"
 `include "interface.sv"
 // `include "base_test.sv"
