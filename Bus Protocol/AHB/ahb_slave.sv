@@ -14,4 +14,4 @@ module ahb_slave(
     output logic hready_o;
     output logic [1:0] hresp,
 
-)
+);
