@@ -2,21 +2,24 @@
 
 module extend (
     input  logic [31:7] instr,
-    input  logic [ 1:0] immsrc,
-    output logic [31:0] immext
+    input  logic [ 1:0] imm_src,
+    output logic [31:0] imm_ext
 );
-
+  logic [31:0] imm_ext_reg;
+  
   always_comb begin
     case (immsrc)
       // I−type
-      2'b00:   immext = {{20{instr[31]}}, instr[31:20]};
+      2'b00:   imm_ext_reg = {{20{instr[31]}}, instr[31:20]};
       // S−type (stores)
-      2'b01:   immext = {{20{instr[31]}}, instr[31:25], instr[11:7]};
+      2'b01:   imm_ext_reg = {{20{instr[31]}}, instr[31:25], instr[11:7]};
       // B−type (branches)
-      2'b10:   immext = {{20{instr[31]}}, instr[7], instr[30:25], instr[11:8], 1'b0};
+      2'b10:   imm_ext_reg = {{20{instr[31]}}, instr[7], instr[30:25], instr[11:8], 1'b0};
       // J−type (jal)
-      2'b11:   immext = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0};
-      default: immext = 32'bx;  // undefined
+      2'b11:   imm_ext_reg = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0};
+      default: imm_ext_reg = 32'bx;  // undefined
     endcase
   end
+
+  assign imm_ext = imm_ext_reg;
 endmodule

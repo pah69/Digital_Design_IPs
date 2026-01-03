@@ -1,27 +1,30 @@
-module data_mem(
-    input logic [31:0] A,    // Address
-    input logic clk, reset,  // Clock and Reset
-    input logic we,          // Write Enable
-    input logic [31:0] wd,   // Write Data
-    output logic [31:0] rd   // Read Data
+module data_mem #(
+    parameter DATA_WIDTH = 32
+) (
+    input  logic [DATA_WIDTH-1:0] A,    // Address
+    input  logic                  clk, reset,
+    input  logic                  we,   // Write Enable
+    input  logic [DATA_WIDTH-1:0] wd,   // Write Data
+    output logic [DATA_WIDTH-1:0] rd    // Read Data
 );
 
-    // 1024 x 32-bit memory block (4 KB)
-    logic [31:0] data_mem_block [0:1023];
+  // 
+  logic [31:0] data_mem_block[1023:0];
+  // [63:0]
 
-    // Synchronous Write + Reset
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
-            // Reset memory using a loop
-            for (int i = 0; i < 1024; i++)
-                data_mem_block[i] <= 0;
-        end 
-        else if (we) begin
-            data_mem_block[A[11:2]] <= wd; // Write data
-        end
+
+  // Synchronous Write + Reset
+  always_ff @(posedge clk or posedge reset) begin
+    if (reset) begin
+      for (int i = 0; i < 1024; i++) begin
+        data_mem_block[i] <= 0;
+      end
+    end else if (we) begin
+      data_mem_block[A] <= wd;  // Write data
     end
+  end
 
-    // Read operation (asynchronous)
-    assign rd = data_mem_block[A[11:2]];
+  // Read operation (asynchronous)
+  assign rd = (we == 1'b0) ? data_mem_block[A[DATA_WIDTH-1:2]] : 32'b0;
 
 endmodule

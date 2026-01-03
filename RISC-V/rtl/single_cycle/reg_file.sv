@@ -1,31 +1,32 @@
-
-
-module reg_file (
-    input logic [31:0] wr_data3, // Write Data
-    input logic [4:0] A1, A2, A3, // Register Addresses
-    input logic we3,              // Write Enable
-    input logic clk, reset,       // Clock and Reset
-    output logic [31:0] rd1, rd2  // Read Data
+module reg_file #(
+    parameter DATA_WIDTH = 32
+) (
+    input  logic                  clk,
+    input  logic                  WE3,  // Write Enable
+    input  logic [           4:0] A1,
+    A2,  // Read Addresses
+    input  logic [           4:0] A3,   // Write Address
+    input  logic [DATA_WIDTH-1:0] WD3,  // Write Data
+    output logic [DATA_WIDTH-1:0] RD1,
+    RD2  // Read Data Outputs
 );
 
-    // 32 registers (x0 - x31), each 32-bit wide
-    logic [31:0] reg_mem_block [31:0];
+  // 32 registers, each 32 bits wide
+  reg [31:0] rf[31:0];
 
-    // Synchronous Write & Reset
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
-            // Reset all registers to zero
-            for (int i = 0; i < 32; i++)
-                reg_mem_block[i] <= 0;
-        end 
-        else if (we3 && A3 != 0) begin
-            // Prevent writing to x0 (register 0)
-            reg_mem_block[A3] <= wr_data3;
-        end
+  // Synchronous Write Logic (Port 3)
+  always @(posedge clk) begin
+    if (WE3) begin
+      // Prevent writing to x0
+      if (A3 != 5'd0) begin
+        rf[A3] <= WD3;
+      end
     end
+  end
 
-    // Read Operation (Asynchronous)
-    assign rd1 = (A1 != 0) ? reg_mem_block[A1] : 32'b0;
-    assign rd2 = (A2 != 0) ? reg_mem_block[A2] : 32'b0;
+  // Asynchronous Read Logic (Ports 1 and 2)
+  // If address is 0, output 0. Otherwise, output the register value.
+  assign RD1 = (A1 == 5'd0) ? 32'd0 : rf[A1];
+  assign RD2 = (A2 == 5'd0) ? 32'd0 : rf[A2];
 
 endmodule
