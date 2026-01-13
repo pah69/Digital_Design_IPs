@@ -1,55 +1,48 @@
 module alu #(
     parameter DATA_WIDTH = 32
 ) (
-    input logic [DATA_WIDTH-1:0] op_a,
-    input logic [DATA_WIDTH-1:0] op_b,
-    input logic [1:0] alu_control,
+    input  logic [DATA_WIDTH-1:0] src_a,
+    input  logic [DATA_WIDTH-1:0] src_b,
+    input  logic [           2:0] alu_control,
     output logic [DATA_WIDTH-1:0] result,
-    output logic cout,
-    output logic overflow,
-    output logic carry,
-    output logic zero,
-    output logic negative
+    output logic                  overflow,
+    output logic                  carry,
+    output logic                  zero,
+    output logic                  negative
 );
 
   logic [DATA_WIDTH-1:0] mux_o;
   logic [DATA_WIDTH-1:0] sum;
-  logic [DATA_WIDTH-1:0] and_o;
-  logic [DATA_WIDTH-1:0] or_o;
+  logic                  cout;
 
-  // MUX 2:1
-  assign mux_o = alu_control[0] ? ~op_b : op_b;
+  // MUX 2:1 - If alu_control[0] is 1, we invert src_b for subtraction
+  assign mux_o = alu_control[0] ? ~src_b : src_b;
 
-  // Adder 
-  assign {cout, sum} = op_a + mux_o + alu_control[0];
+  // Adder - The alu_control[0] also acts as the +1 Carry-In for 2's complement subtraction
+  assign {cout, sum} = src_a + mux_o + alu_control[0];
 
-  // AND
-  assign and_o = op_a & op_b;
-
-  // OR
-  assign or_o = op_a | op_b;
+  // Set Less Than: 1 if src_a < src_b. 
+  logic slt_o;
+  assign slt_o = sum[31] ^ overflow;
 
   // Main mux
   always_comb begin
     case (alu_control)
-      2'b00:   result = sum;
-      2'b01:   result = sum;
-      2'b10:   result = and_o;
-      2'b11:   result = or_o;
+      3'b000:  result = sum;  // Add
+      3'b001:  result = sum;  // Sub
+      3'b010:  result = src_a & src_b;  // And
+      3'b011:  result = src_a | src_b;  // Or
+      3'b101:  result = {{(DATA_WIDTH - 1) {1'b0}}, slt_o};  // SLT
       default: result = {DATA_WIDTH{1'bx}};
     endcase
   end
 
-  // overflow flag
-  logic [1:0] xor_o;
-  logic [1:0] xnor_o;
+  // Overflow = (Sign of A == Sign of B_after_mux) AND (Sign of Sum != Sign of A)
+  assign overflow = (src_a[31] == mux_o[31]) && (sum[31] != src_a[31]);
 
-  assign xnor_o   = ~(op_a[31] ^ op_b[31] ^ alu_control[0]);
-  assign xor_o    = op_a[31] ^ sum[31];
-  assign overflow = xor_o & xnor_o & ~alu_control[1];
-
-  // other flags
+  // Flags
   assign negative = result[DATA_WIDTH-1];
   assign zero     = (result == {DATA_WIDTH{1'b0}});
-  assign carry    = (~alu_control[1]) & cout;
+  assign carry    = (~alu_control[1]) & cout;  // Only valid for add/sub
+
 endmodule
