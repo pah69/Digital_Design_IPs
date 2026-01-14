@@ -21,7 +21,6 @@ module alu_decoder (
         end else begin
           alu_control = 3'b000;
         end
-
         3'b010: alu_control = 3'b101;  // SLT
         3'b110: alu_control = 3'b011;  // OR
         3'b111: alu_control = 3'b010;  // AND

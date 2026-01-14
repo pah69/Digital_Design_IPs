@@ -28,8 +28,8 @@ module alu #(
   // Main mux
   always_comb begin
     case (alu_control)
-      3'b000:  result = sum;  // Add
-      3'b001:  result = sum;  // Sub
+      3'b000:  result = sum;            // Add
+      3'b001:  result = sum;            // Sub
       3'b010:  result = src_a & src_b;  // And
       3'b011:  result = src_a | src_b;  // Or
       3'b101:  result = {{(DATA_WIDTH - 1) {1'b0}}, slt_o};  // SLT

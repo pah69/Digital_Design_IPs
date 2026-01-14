@@ -11,8 +11,8 @@ module single_cycle_core(clk, reset);
     
     // Instantiations
 
-    datapath datapath();
-    controller controller();
+    datapath datapath_inst();
+    controller controller_inst();
 
 
 
